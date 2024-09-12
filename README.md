@@ -27,10 +27,10 @@ Finally, we evaluate the model using performance metrics such as accuracy, preci
 The dataset containing detailed information on loans from LendingClub was collected from July 2016 to December 2018. The original dataset comprises a total of 151 variables. However, for the purpose of this study, a reduced dataset consisting of only 27 variables has been created, containing over 215,982 observations. This reduced dataset includes 14 numerical variables and 12 categorical variables. In this research, the target variable will be 'loan_status', which indicates whether a loan has been fully paid or poses a risk of default. A value of 1 for 'loan_status' signifies that the customer is at risk of default, also known as Charged-Off, while a value of 0 indicates that the customer has fully paid off the loan, also known as Fully-Paid.
 
 ***Dependent variable***
-loan_status - Current status of the loan, 0: Fully-Paid, 1: Charged-Off
+<br>loan_status - Current status of the loan, 0: Fully-Paid, 1: Charged-Off
 
 ***Independent variable***
-issue_d - The month which the loan was funded
+<br>issue_d - The month which the loan was funded
 
 sub_grade - LC assigned loan subgrade
 
@@ -105,17 +105,17 @@ Before training models, I utilize the StandardScaler method to preprocess the da
 
 ### Research Results
 
-***Exploratory Data Analysis - Descriptive statistics of the numerical variables***
+***--- Exploratory Data Analysis - Descriptive statistics of the numerical variables***
 
 The FICO score in this dataset ranges from 660 to 850, with higher scores indicating better creditworthiness. In this dataset, 25% of the FICO scores in the dataset are lower than or equal to 674, the median FICO scores for "fico_range_low" and "fico_range_high" are 690 and 694, respectively, indicating an average range within the FICO scale. P2P Lending platforms cater to those facing credit score challenges and limited access to traditional loans. Individuals with scores below 620 may find it challenging to secure loans, especially in the subprime market. The median is lower than the mean, indicating that the FICO score follows a right-skewed distribution
 
-***Exploratory Data Analysis - Descriptive statistics of the categorical variables***
+***--- Exploratory Data Analysis - Descriptive statistics of the categorical variables***
 
 The analysis of categorical variables reveals insightful patterns about the borrowers. Firstly, it's notable that the most common sub-grade is 'B5', suggesting that a considerable portion of borrowers fall within this moderate credit risk category. Additionally, the prevalence of 'MORTGAGE' as the primary home ownership status indicates that a significant proportion of borrowers own homes with mortgages, reflecting the stability and asset ownership among borrowers. Moreover, the majority of loan purposes are geared towards 'debt consolidation', indicating a prevalent need among borrowers to consolidate their debts, showcasing their financial management behavior and the utility of loans in managing debt effectively.
 
 In terms of loan characteristics, the dominance of '36 months' loan terms implies that borrowers generally opt for shorter loan durations, potentially driven by preferences for quicker repayment and lower overall interest costs. Moreover, the high frequency of 'Individual' application types suggests that most borrowers prefer to apply for loans individually rather than jointly. This insight sheds light on the typical borrower profile and application process on the lending platform, providing valuable information for assessing borrower behavior and tailoring loan offerings accordingly.
 
-***Exploratory Data Analysis - Visualization with Python***
+***--- Exploratory Data Analysis - Visualization with Python***
 
 Since the loan purpose has 12 values, to make it easier to observe, I have filtered out the top 3 loan purposes with the highest number of charged-off cases and the lowest 3, the results are shown in the following chart. Small business loans have the highest proportion of charged-off cases at 20%, followed by house and debt consolidation. On the other hand, reasons for borrowing money such as buying a car, credit card, and home improvement have lower risks. This is understandable because small business loans are often perceived as riskier in credit assessment due to various factors. For example, studies have found that new businesses heavily rely on credit from informal sources such as business contacts and family, and that bank loans to small businesses tend to be personally guaranteed.
 
@@ -131,7 +131,7 @@ The FICO score exhibits a negative correlation with the revol_util variable at 0
 
 We further observe that the interest_rate variable has a positive correlation with loan_status at 0.25 and with revol_util at 0.24. This explains why individuals facing difficulties accessing capital are more likely to accept offers with higher interest rates, which in turn increases their risk of default. Although credit scores in this study do not significantly affect repayment likelihood, when combined with other factors, we can infer that they still indirectly influence an individual's credit status.
 
-***Training and Testing results after upsampling***
+***--- Training and Testing results after upsampling***
 
 Due to the significant disparity in the number of default and non-default borrowers in the current dataset, as depicted in the chart below, it is experiencing an imbalance issue. This imbalance phenomenon could potentially impact the model's performance. When datasets are imbalanced, meaning that one class is significantly more prevalent than another, models trained on such data tend to exhibit biases towards the majority class. Moreover, imbalanced data can also lead to model overfitting, where the model learns noise from the majority class rather than capturing meaningful patterns from the data. As a result, the evaluation of models trained on imbalanced data using standard metrics like accuracy can be misleading, as these metrics do not effectively capture the model's performance on the minority class
 
